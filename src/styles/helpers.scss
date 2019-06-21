@@ -1,0 +1,16 @@
+//region Margin Helper
+$spaceamounts: (0, 1, 2, 3, 4, 5, 10, 15, 20);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+	@each $side in $sides {
+		.m-#{$side}-#{$space} {
+			margin-#{$side}: #{$space}px !important;
+		}
+
+		.pad-#{$side}-#{$space} {
+			padding-#{$side}: #{$space}px !important;
+		}
+	}
+}
+//endregion

@@ -1,0 +1,18 @@
+<div class="row" *ngIf="store.heroes.length">
+	<div class="col-4 col-lg-3 col-xl-2">
+		<party-hero-box [hero]="store.heroes[0]" *ngIf="store.heroes[0]"></party-hero-box>
+	</div>
+	<div class="col-4 col-lg-3 col-xl-2">
+		<party-hero-box [hero]="store.heroes[1]" *ngIf="store.heroes.length > 1"></party-hero-box>
+	</div>
+	<div class="col-4 col-lg-3 col-xl-2">
+		<party-hero-box [hero]="store.heroes[2]" *ngIf="store.heroes.length > 2"></party-hero-box>
+	</div>
+	<div class="col-4 col-lg-3 col-xl-2">
+		<party-hero-box [hero]="store.heroes[3]" *ngIf="store.heroes.length > 3"></party-hero-box>
+	</div>
+</div>
+
+<div class="m-top-10 m-left-5">
+	<button class="btn btn-sm btn-light m-0 pad-2" (click)="toggleInventory()">Inventory</button>
+</div>

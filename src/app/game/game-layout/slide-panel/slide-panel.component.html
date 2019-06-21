@@ -1,0 +1,7 @@
+<section class="slide-panel" [ngClass]="(isOpen ? 'open' : '') + ' ' + direction + ' ' + size">
+	<div class="close-panel" (click)="close()">
+		<span>&times;</span>close
+	</div>
+
+	<ng-content></ng-content>
+</section>

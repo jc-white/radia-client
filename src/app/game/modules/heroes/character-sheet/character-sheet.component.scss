@@ -1,0 +1,50 @@
+:host {
+	h3, h4, h5 {
+		color: #EEE;
+	}
+
+	h5 {
+		margin: 0 0 10px 0;
+	}
+
+	.equip-slot-label {
+		height: 25px;
+		font-weight: bold;
+	}
+
+	.equip-slot-item {
+		height: 25px;
+
+		span.no-item {
+			opacity: 0.3;
+			margin-left: 19px;
+		}
+
+		.equipment-actions {
+			opacity: 0;
+			transition: opacity 0.1s ease-in-out;
+
+			div {
+				position: relative;
+				top: 1px;
+			}
+		}
+
+		&:not(.no-item):hover {
+			.equipment-actions {
+				opacity: 0.9;
+			}
+		}
+	}
+
+	.equipment-actions, .equip-slot-item, .equip-slot-label {
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	/deep/ .trait-container {
+		div.label {
+			font-size: 14px;
+		}
+	}
+}

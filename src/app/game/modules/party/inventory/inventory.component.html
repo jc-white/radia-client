@@ -1,0 +1,35 @@
+<div id="inventory-panel">
+	<inventory-item *ngFor="let itemID of partyStore.party?.inventory?.items|keys" [itemID]="itemID" [count]="partyStore.party?.inventory?.items[itemID]"
+	                (onSelect)="selectItem($event)"
+					(onDiscard)="discardItem($event)">
+	</inventory-item>
+</div>
+
+<ng-template #discardModalContent let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title">Discard Item</h4>
+		<button type="button" class="close" aria-label="Close" (click)="d()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<ng-container *ngIf="partyStore.party?.inventory?.items[store.discardingItem?.itemID] > 1">
+			<p class="text-center">
+				How many <strong [textContent]="store.discardingItem?.name"></strong> would you like to discard?
+			</p>
+
+			<div class="m-top-10 text-center">
+				<input type="number" [(ngModel)]="discardAmount" step="1" min="1" [max]="partyStore.party?.inventory?.items[store.discardingItem?.itemID]">
+			</div>
+		</ng-container>
+		<ng-container *ngIf="partyStore.party?.inventory?.items[store.discardingItem?.itemID] == 1">
+			<p class="text-center">
+				Are you sure you want to discard the <strong [textContent]="store.discardingItem?.name"></strong>?
+			</p>
+		</ng-container>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline" (click)="d()">Cancel</button>
+		<button type="button" class="btn btn-outline-danger" (click)="c()">Confirm</button>
+	</div>
+</ng-template>

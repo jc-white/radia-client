@@ -1,0 +1,16 @@
+.tooltip {
+	&.show {
+		opacity: 0.95;
+	}
+
+	.tooltip-inner {
+		text-align: left;
+		max-width: 275px;
+		font-size: 14px;
+		border-radius: 2px;
+	}
+}
+
+.tippy-tooltip {
+	font-size: 18px;
+}

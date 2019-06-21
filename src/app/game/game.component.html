@@ -1,0 +1,49 @@
+<div class="main-container container-fluid p-0">
+	<nav class="navbar navbar-expand-lg header">
+		<a class="navbar-brand" href="#">Legends of Radia</a>
+
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/">Home</a>
+				</li>
+
+				<li class="nav-item" *ngIf="auth.loggedIn">
+					<a class="nav-link" routerLink="/game/explore">Play</a>
+				</li>
+
+				<li class="nav-item" *ngIf="!auth.loggedIn">
+					<a class="nav-link" routerLink="/signin" >Sign In</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="content-container">
+		<slide-panel direction="left" [size]="layoutService.leftPanelOptions.size">
+			<character-sheet [hero]="layoutService.leftPanelOptions.hero" *ngIf="layoutService.leftPanelModule == 'character-sheet'"></character-sheet>
+		</slide-panel>
+
+		<slide-panel direction="right" [size]="layoutService.rightPanelOptions.size">
+			<inventory *ngIf="layoutService.rightPanelModule == 'inventory'"></inventory>
+		</slide-panel>
+
+		<div class="content-area" #contentArea>
+			<party-bar></party-bar>
+
+			<div class="game-content">
+				<router-outlet></router-outlet>
+			</div>
+
+			<section id="item-windows">
+				<item-window [item]="item" *ngFor="let item of itemService.openWindows"></item-window>
+			</section>
+
+			<game-window-host></game-window-host>
+		</div>
+		<nav class="sidenav" *ngIf="auth.loggedIn">
+			<party-status-panel class="m-bottom-20"></party-status-panel>
+			<resources-panel class="m-bottom-10"></resources-panel>
+			<explore-actions *ngIf="currentScreen == 'explore'"></explore-actions>
+		</nav>
+	</div>
+</div>

@@ -1,0 +1,89 @@
+@import '../../../../styles/mixins';
+
+:host {
+	div.item-window {
+		opacity: 0;
+		transition: opacity 0.1s ease-in-out;
+
+		background-color: transparentize(#151515, 0.02);
+		color: #FFF;
+		border-radius: 2px;
+		position: absolute;
+		left: calc(50% - 300px);
+		top: calc(50% - 200px);
+
+		height: 200px;
+		width: 400px;
+
+		z-Index: 3000;
+
+		-webkit-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+		-moz-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+		box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+
+		&.show {
+			opacity: 1.0;
+		}
+
+		div.item-window-contents {
+			padding: 5px 10px;
+			position: relative;
+
+			div.close-icon {
+				position: absolute;
+				top: 3px;
+				right: 2px;
+				cursor: pointer;
+				color: #DDD;
+				line-height: 12px;
+				font-size: 24px;
+
+				&:hover {
+					color: #FFF;
+				}
+			}
+
+			div.item-name {
+				font-size: 16px;
+				margin: 0 0 20px 0;
+				font-family: 'Cousine', monospace;
+				color: #FFF;
+
+				@include no-select();
+			}
+
+			div.item-stats {
+				font-family: 'Cousine', monospace;
+
+				div {
+					line-height: 14px;
+				}
+			}
+
+			div.item-icon {
+				position: absolute;
+				top: 20px;
+				right: 15px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 2px;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img {
+					width: 32px;
+					height: 32px;
+				}
+			}
+
+			div.item-info {
+				margin-top: 30px;
+				font-family: Metropolis, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+				font-size: 12px;
+				line-height: 16px;
+			}
+		}
+	}
+}

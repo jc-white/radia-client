@@ -1,0 +1,47 @@
+import {IAffinityList} from '../interfaces/hero/hero.interface';
+
+export const AffinitiesDictionary: IAffinityList = {
+	brawn: {
+		name: 'Brawn'
+	},
+
+	combat: {
+		name: 'Combat Ability'
+	},
+
+	arcane: {
+		name: 'Arcane Ability'
+	},
+
+	learning: {
+		name: 'Learning Ability'
+	},
+
+	luck: {
+		name: 'Luck'
+	},
+
+	alcohol: {
+		name: 'Alcohol Tolerance'
+	},
+
+	evasiveness: {
+		name: 'Evasiveness'
+	},
+
+	accuracy: {
+		name: 'Accuracy'
+	},
+
+	charisma: {
+		name: 'Charisma'
+	},
+
+	fortitude: {
+		name: 'Fortitude'
+	},
+
+	speechcraft: {
+		name: 'Speechcraft'
+	}
+};

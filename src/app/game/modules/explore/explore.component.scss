@@ -1,0 +1,31 @@
+:host {
+	#explore-container {
+		padding: 0;
+		background-color: lightgray;
+		min-width: 520px;
+		border-radius: 2px;
+	}
+
+	#worldmap-outer-container {
+		width: 500px;
+		min-width: 500px;
+		-webkit-box-flex: 0;
+		flex: 0 0 500px;
+		max-width: 500px;
+	}
+
+	#worldmap-inner-container {
+		text-align: center;
+	}
+
+	#actions-col {
+		background-color: darken(lightgray, 5%);
+		padding: 10px 10px 0 10px;
+	}
+
+	#current-tile-context {
+		padding: 10px;
+		height: 100%;
+		border-left: 1px solid darkgray;
+	}
+}

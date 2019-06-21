@@ -1,0 +1,12 @@
+:host {
+	div#inventory-panel {
+		border-bottom: none;
+		background-color: #FFF;
+		padding: 10px;
+		height: 300px;
+
+		display: flex;
+		flex-flow: column wrap;
+		align-content: flex-start;
+	}
+}

@@ -1,0 +1,98 @@
+@import './input';
+@import './helpers';
+@import './bootstrap-grid-xxl';
+@import './mixins';
+@import './_colors';
+@import './typography';
+@import './scaffold';
+@import './lists';
+@import './tooltips';
+@import './progress';
+@import './tabs';
+@import './forms';
+@import './dropdown';
+@import './bootstrap-overrides';
+
+$hero-vit-container-height: 10px;
+
+.hero-vit-container {
+	width: 150px;
+	line-height: $hero-vit-container-height;
+	height: $hero-vit-container-height;
+
+	.hero-vit-label {
+		width: 20px;
+		display: inline-block;
+		line-height: $hero-vit-container-height;
+		position: relative;
+		top: -1px;
+		font-size: $hero-vit-container-height + 2px;
+	}
+
+	+.hero-vit-container {
+		margin-top: 2px;
+	}
+}
+
+.hero-vit-bar {
+	width: 125px !important;
+	height: $hero-vit-container-height !important;
+	display: inline-block !important;
+	max-height: $hero-vit-container-height !important;
+	min-height: $hero-vit-container-height !important;
+	line-height: $hero-vit-container-height !important;
+
+	&.large {
+		width: 150px !important;
+	}
+
+	> progress {
+		height: $hero-vit-container-height !important;
+		line-height: $hero-vit-container-height !important;
+	}
+
+	&.hp {
+		> progress::-webkit-progress-value {
+			background-color: #ff5a5a;
+		}
+
+		> progress::-moz-progress-bar {
+			background-color: #ff5a5a;
+		}
+	}
+
+	&.mp {
+		> progress::-webkit-progress-value {
+			background-color: #6c90fd;
+		}
+
+		> progress::-moz-progress-bar {
+			background-color: #6c90fd;
+		}
+	}
+
+	&.st {
+		> progress::-webkit-progress-value {
+			background-color: #39bf74;
+		}
+
+		> progress::-moz-progress-bar {
+			background-color: #39bf74;
+		}
+	}
+}
+
+//region Misc styles
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.hover-opacity {
+	opacity: 0.8;
+	transition: opacity 0.1s ease-in-out;
+
+	&:hover {
+		opacity: 1.0;
+	}
+}
+//endregion

@@ -1,0 +1,7 @@
+<ng-container [ngSwitch]="store.currentTileProps.locationType">
+	<ul class="action-list">
+		<li (click)="openShopWindow()">Buy & Sell</li>
+		<li (click)="openHeroRecruitWindow()">Recruit Heroes</li>
+		<li (click)="openRumorsWindow()">Latest Rumors</li>
+	</ul>
+</ng-container>

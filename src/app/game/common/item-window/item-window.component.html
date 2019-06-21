@@ -1,0 +1,25 @@
+<div class="item-window" ngDraggable [bounds]="gc.contentArea.nativeElement" [inBounds]="true" [preventDefaultEvent]="true" *ngIf="gc" [ngClass]="isOpen ? 'show' : ''" #dragWindow>
+	<div class="item-window-contents">
+		<div class="close-icon" (click)="close()">&times;</div>
+
+		<div class="item-icon">
+			<img [src]="statics + '/ui/items-2x/' + item.icon" *ngIf="item.icon" />
+			<img [src]="statics + '/ui/items-2x/unknown-item.png'" *ngIf="!item.icon" />
+		</div>
+
+		<div class="item-name" [innerHTML]="item.name"></div>
+
+		<div class="item-stats" *ngIf="item.stats">
+			<div class="row" *ngFor="let stat of item.stats|pairs">
+				<div class="col-2">
+					{{stat[0]|uppercase}}
+				</div>
+				<div class="col-10">
+					{{stat[1] > 0 ? '+' : '-'}}{{stat[1]}}
+				</div>
+			</div>
+		</div>
+
+		<div class="item-info" [innerHTML]="item.info"></div>
+	</div>
+</div>

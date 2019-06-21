@@ -1,0 +1,17 @@
+//region Modals
+.modal-backdrop {
+	z-index: 3000 !important;
+}
+
+.modal {
+	z-index: 3001 !important;
+}
+
+.modal-header {
+	padding: 5px 15px;
+}
+
+.modal-content {
+	border-radius: 2px;
+}
+//endregion

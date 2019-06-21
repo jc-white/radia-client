@@ -1,0 +1,27 @@
+<div class="login-wrapper">
+	<form class="login" action="http://localhost:3000/auth/login" method="POST">
+		<label class="title">
+			Legends of Radia
+		</label>
+		<ng-container *ngIf="auth.loggedIn">
+			<h3>You are signed in as <strong [innerHTML]="auth.user.email"></strong>.</h3>
+			<a href="javascript:void(0)" (click)="doLogout()">Logout?</a>
+		</ng-container>
+
+		<div class="login-group" *ngIf="!auth.loggedIn">
+			<input class="username" type="text" id="email" name="email" placeholder="E-Mail Address" [(ngModel)]="email">
+			<input class="password" type="password" id="password" name="password" placeholder="Password" [(ngModel)]="password">
+			<input class="password" type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" *ngIf="registering" [(ngModel)]="passwordConfirm">
+			<div class="checkbox" *ngIf="!registering">
+				<input type="checkbox" id="remember" name="remember" [(ngModel)]="remember">
+				<label for="remember">
+					Remember me
+				</label>
+			</div>
+			<button class="btn btn-primary mt-3" *ngIf="!registering" (click)="doLogin()">Log In</button>
+			<button class="btn btn-primary mt-3" *ngIf="registering" (click)="doRegister()">Complete Registration</button>
+			<button type="button" class="btn btn-primary mt-1" *ngIf="registering" (click)="toggleRegister()">Go Back</button>
+			<a href="javascript:void(0)" class="signup" (click)="toggleRegister()" *ngIf="!registering">No account? Sign up now!</a>
+		</div>
+	</form>
+</div>

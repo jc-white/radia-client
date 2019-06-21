@@ -1,0 +1,36 @@
+<div *ngIf="item" [id]="'inv-item-' + item.itemID" [ngClass]="store.currentItem?.itemID === item.itemID ? 'expanded' : ''">
+	<div class="img-container">
+		<img [src]="statics + '/ui/items/' + item.icon" *ngIf="item.icon" />
+		<img [src]="statics + '/ui/items/unknown-item.png'" *ngIf="!item.icon" />
+	</div>
+
+	<span [innerHTML]="item.name" (click)="select()"></span>
+	<span class="count">&times;{{count}}</span>
+
+	<div class="item-actions">
+		<button class="btn btn-link" (click)="info()">Info</button>
+		<button class="btn btn-link" [style.display]="item.isUsable && !item.usableRequiresTarget ? 'inline-block' : 'none'">Use</button>
+
+		<div class="d-inline-block" ngbDropdown #useDrop="ngbDropdown" ngbDropdownReposition>
+			<button class="btn btn-link" [style.display]="item.isUsable && item.usableRequiresTarget ? 'inline-block' : 'none'" [id]="'useDropdown-' + item.itemID" ngbDropdownToggle>Use</button>
+
+			<div ngbDropdownMenu [attr.aria-labelledby]="'useDropdown-' + item.itemID">
+				<ng-container *ngFor="let hero of heroStore.heroes">
+					<button class="dropdown-item" [textContent]="hero.name" (click)="use(hero.heroID)"></button>
+				</ng-container>
+			</div>
+		</div>
+
+		<div class="d-inline-block" ngbDropdown #equipDrop="ngbDropdown" autoClose="outside" ngbDropdownReposition>
+			<button class="btn btn-link" [style.display]="item.isEquippable ? 'inline-block' : 'none'" [id]="'equipDropdown-' + item.itemID" ngbDropdownToggle>Equip</button>
+
+			<div ngbDropdownMenu [attr.aria-labelledby]="'equipDropdown-' + item.itemID">
+				<ng-container *ngFor="let hero of heroStore.heroes">
+					<button class="dropdown-item" [textContent]="hero.name + ' (' + (slot|ucfirst) + ')'" (click)="equip(hero.heroID, slot)" *ngFor="let slot of item.equipSlots"></button>
+				</ng-container>
+			</div>
+		</div>
+
+		<button class="btn btn-link" [style.display]="item.canDiscard() ? 'inline-block' : 'none'" (click)="discard()">Discard</button>
+	</div>
+</div>

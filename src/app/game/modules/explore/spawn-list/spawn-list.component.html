@@ -1,0 +1,5 @@
+<ul>
+	<li *ngFor="let spawn of store.spawns">
+		<span [textContent]="spawn.npc.name" *ngIf="spawn.spawnType == spawnTypes.NPC"></span>
+	</li>
+</ul>

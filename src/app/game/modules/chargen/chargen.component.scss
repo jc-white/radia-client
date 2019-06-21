@@ -1,0 +1,66 @@
+@import '../../../../styles/_colors';
+
+:host {
+	.backstory-container {
+		section {
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+
+			h4 {
+				margin-top: 0;
+			}
+
+			p {
+				margin-top: 15px;
+			}
+		}
+	}
+
+	.free-trait-container {
+		width: 80%;
+
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		flex-flow: row wrap;
+
+		span.label {
+			padding: 12px 5px;
+			width: 120px;
+			margin-top: 10px;
+			justify-content: flex-start;
+		}
+	}
+
+	span.label {
+		border-radius: 1px;
+		text-transform: capitalize;
+		cursor: default;
+
+		strong {
+			text-transform: capitalize;
+			margin-right: 7px;
+		}
+
+		&.meta-trait {
+			background-color: $metaTrait;
+		}
+	}
+
+	.trait-tt-label {
+		width: 60px;
+		display: inline-block;
+	}
+
+	.pos-affinity {
+		color: lawngreen;
+	}
+
+	.neg-affinity {
+		color: orangered;
+	}
+}

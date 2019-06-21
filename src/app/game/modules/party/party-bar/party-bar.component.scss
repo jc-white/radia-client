@@ -1,0 +1,12 @@
+:host {
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid #ccc;
+	min-height: 80px;
+
+	/deep/ {
+		div.hero-divider {
+			margin-top: 5px;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+input[type="text"] {
+	&.input-lg {
+		font-size: 24px;
+		height: 30px;
+	}
+}
+
+button {
+	outline: none !important;
+}
+
+clr-checkbox {
+	&.checkbox-large {
+		label {
+			&:before {
+				height: 24px !important;
+				width: 24px !important;
+			}
+
+			&:after {
+				height: 30% !important;
+				width: 60% !important;
+				top: 7px !important;
+				left: 5px !important;
+			}
+		}
+	}
+}

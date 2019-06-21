@@ -1,0 +1,9 @@
+<div class="recruitable-hero-list">
+	<div class="recruitable-hero-box" *ngFor="let hero of store.recruits">
+		<strong class="recruitable-hero-name" [textContent]="hero.name"></strong>
+		<div class="recruitable-hero-level" [textContent]="'Level ' + hero.level"></div>
+
+		<div class="recruitable-hero-view-button cursor-pointer hover-opacity" (click)="viewHero(hero)">View</div>
+		<div class="recruitable-hero-recruit-button cursor-pointer hover-opacity" (click)="recruitConfirm(hero)">Recruit</div>
+	</div>
+</div>

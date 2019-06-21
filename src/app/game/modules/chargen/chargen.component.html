@@ -1,0 +1,167 @@
+<div *ngIf="store.step == 1">
+	<h3 class="mb-3">Create New Character</h3>
+
+	<input type="text" class="input-lg" size="35" placeholder="Character name" [(ngModel)]="store.formData.name"/>
+
+	<div class="mt-1">
+		<button type="button" class="btn btn-sm" [ngClass]="{'btn-link': store.isFemale}" (click)="store.genderMale()">
+			Male
+			<fa name="check" *ngIf="store.isMale"></fa>
+		</button>
+		<button type="button" class="btn btn-sm" [ngClass]="{'btn-link': store.isMale}" (click)="store.genderFemale()">
+			Female
+			<fa name="check" *ngIf="store.isFemale"></fa>
+		</button>
+	</div>
+</div>
+
+<div *ngIf="store.step == 2">
+	<h3 class="mb-3">Select a Backstory</h3>
+
+	<ngb-alert [dismissible]="false">
+		<strong>Traits</strong> are characteristics that every hero has. Some have positive effects, some negative. All traits confer either <strong>skills</strong> or <strong>affinities</strong> upon
+		your heroes. You will encounter both skill and affinity checks throughout the game.
+		<br/> <br/>
+		<strong>Skills</strong> range from 0 to 50 and can be improved with repeated use throughout your adventures.
+		<br/>
+		<strong>Affinities</strong> range from -10 to +10, cannot be trained, and are derived from a variety of sources, including skills.
+	</ngb-alert>
+
+	<div class="mt-1 backstory-container">
+		<section *ngFor="let backstory of store.backstories">
+			<div class="row">
+				<div class="col-1">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" (ngModelChange)="store.selectBackstory($event, backstory)" [checked]="store.selectedBackstory && (store.selectedBackstory.id == backstory.id)" />
+					</div>
+				</div>
+				<div class="col-11">
+					<h4 [innerHTML]="backstory.name"></h4>
+					<p [innerHTML]="backstory.desc"></p>
+					<div class="effects">
+<!--						<clr-tooltip *ngFor="let trait of backstory.traits">
+							<span class="label" clrTooltipTrigger [ngClass]="store.traits[trait].color"><strong>Trait</strong>{{store.traits[trait]?.name}}</span>
+
+							<clr-tooltip-content clrPosition="bottom-right" clrSize="lg">
+								<div [innerHTML]="store.traits[trait].desc" class="mb-1"></div>
+								<div *ngFor="let skill of store.traits[trait].skills">
+									<strong class="mr-1 trait-tt-label">Skill</strong> <span class="pos-affinity">{{store.skills[skill.skill].name}} +{{skill.value}}</span>
+								</div>
+								<div *ngFor="let affinity of store.traits[trait].affinities">
+									<strong class="mr-1 trait-tt-label">Affinity</strong> <span [ngClass]="affinity.value > 0 ? 'pos' : 'neg'">{{store.affinities[affinity.affinity].name}} {{affinity.value > 0 ? '+' : ''}}{{affinity.value}}</span>
+								</div>
+							</clr-tooltip-content>
+						</clr-tooltip>-->
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+<div *ngIf="store.step == 3">
+	<h3 class="mb-3">Select Free Traits</h3>
+
+	<ngb-alert [dismissible]="" ]="false">
+		You may select two additional traits with which to define your hero. Some traits may be unavailable if they were already part of your backstory.
+	</ngb-alert>
+
+	<div class="mt-1 free-trait-container">
+<!--		<clr-tooltip *ngFor="let trait of store.positiveTraits">
+			<span class="label" clrTooltipTrigger [ngClass]="trait.color">
+				<clr-checkbox [(ngModel)]="store.selectedTraits[trait.traitID]" (ngModelChange)="store.updateModifiers()" [clrDisabled]="!store.selectedTraits[trait.traitID] && store.numSelectedTraits >= 2">{{trait.name}}</clr-checkbox>
+			</span>
+
+			<clr-tooltip-content clrSize="lg" clrPosition="bottom-right">
+				<div [innerHTML]="trait.desc" class="mb-1"></div>
+				<div *ngFor="let skill of trait.skills">
+					<strong class="mr-1 trait-tt-label">Skill</strong> <span class="pos-affinity">{{store.skills[skill.skill].name}} +{{skill.value}}</span>
+				</div>
+				<div *ngFor="let affinity of trait.affinities">
+					<strong class="mr-1 trait-tt-label">Affinity</strong> <span [ngClass]="affinity.value > 0 ? 'pos' : 'neg'">{{store.affinities[affinity.affinity].name}} {{affinity.value > 0 ? '+' : ''}}{{affinity.value}}</span>
+				</div>
+
+				<div *ngIf="!trait.skills && !trait.affinities">
+					<strong>Meta Trait</strong> - No skills or affinities
+				</div>
+			</clr-tooltip-content>
+		</clr-tooltip>-->
+	</div>
+</div>
+
+<div *ngIf="store.step == 4">
+	<h3>Summary</h3>
+
+	<div class="mt-1">
+		<strong>Name</strong>: {{store.formData.name}}
+	</div>
+
+	<div class="mt-1">
+		<strong>Gender</strong>: {{store.formData.gender == 1 ? 'Male' : 'Female'}}
+	</div>
+
+	<div class="mt-1">
+		<strong>Backstory</strong>: {{store.selectedBackstory.name}}
+	</div>
+	<div class="mt-1">
+		<strong>Traits</strong>
+	</div>
+	<div>
+		<div *ngFor="let trait of store.selectedBackstory.traits">
+<!--			<clr-tooltip>
+				<span class="label" clrTooltipTrigger [ngClass]="store.traits[trait].color">{{store.traits[trait]?.name}}</span>
+				<clr-tooltip-content clrSize="lg" clrPosition="bottom-right">
+					<div [innerHTML]="store.traits[trait].desc" class="mb-1"></div>
+					<div *ngFor="let skill of store.traits[trait].skills">
+						<strong class="mr-1 trait-tt-label">Skill</strong> <span class="pos-affinity">{{store.skills[skill.skill].name}} +{{skill.value}}</span>
+					</div>
+					<div *ngFor="let affinity of store.traits[trait].affinities">
+						<strong class="mr-1 trait-tt-label">Affinity</strong> <span [ngClass]="affinity.value > 0 ? 'pos' : 'neg'">{{store.affinities[affinity.affinity].name}} {{affinity.value > 0 ? '+' : ''}}{{affinity.value}}</span>
+					</div>
+				</clr-tooltip-content>
+			</clr-tooltip>-->
+		</div>
+
+		<div *ngFor="let trait of store.selectedTraits|keys">
+<!--			<clr-tooltip>
+				<span class="label" clrTooltipTrigger [ngClass]="store.traits[trait].color">{{store.traits[trait].name}}</span>
+				<clr-tooltip-content clrSize="lg" clrPosition="bottom-right">
+					<div [innerHTML]="store.traits[trait].desc" class="mb-1"></div>
+					<div *ngFor="let skill of store.traits[trait].skills">
+						<strong class="mr-1 trait-tt-label">Skill</strong> <span class="pos-affinity">{{store.skills[skill.skill].name}} +{{skill.value}}</span>
+					</div>
+					<div *ngFor="let affinity of store.traits[trait].affinities">
+						<strong class="mr-1 trait-tt-label">Affinity</strong> <span [ngClass]="affinity.value > 0 ? 'pos' : 'neg'">{{store.affinities[affinity.affinity].name}} {{affinity.value > 0 ? '+' : ''}}{{affinity.value}}</span>
+					</div>
+
+					<div *ngIf="!store.traits[trait].skills && !store.traits[trait].affinities">
+						<strong>Meta Trait</strong> - No skills or affinities
+					</div>
+				</clr-tooltip-content>
+			</clr-tooltip>-->
+		</div>
+	</div>
+	<div class="mt-1">
+		<strong>Skill Modifiers</strong>
+
+		<div *ngFor="let skill of store.skillModifiers|keys">{{store.skills[skill].name}} {{store.skillModifiers[skill] > 0 ? '+' : ''}}{{store.skillModifiers[skill]}}</div>
+	</div>
+	<div class="mt-1">
+		<strong>Affinity Modifiers</strong>
+
+		<div *ngFor="let affinity of store.affinityModifiers|keys">{{store.affinities[affinity].name}} {{store.affinityModifiers[affinity] > 0 ? '+' : ''}}{{store.affinityModifiers[affinity]}}</div>
+	</div>
+</div>
+
+<div class="mt-3">
+	<button type="button" class="btn btn-primary" *ngIf="store.step > 1" (click)="store.previousStep()">
+		<fa name="chevron-left"></fa>
+		Previous
+	</button>
+	<button type="button" class="btn btn-primary" *ngIf="store.step < 4" [disabled]="!store.nextStepEnabled" (click)="store.nextStep()">Next
+		<fa name="chevron-right"></fa>
+	</button>
+	<button type="button" class="btn btn-primary" *ngIf="store.step == 4" [disabled]="!store.nextStepEnabled" (click)="store.submit()">Done
+		<fa name="chevron-right"></fa>
+	</button>
+</div>

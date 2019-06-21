@@ -1,0 +1,41 @@
+@import './_colors';
+
+.nav-tabs {
+	border: none;
+
+	.nav-item {
+		.nav-link {
+			background-color: transparent;
+			border: none;
+			padding: 0.25rem 1rem;
+			transition: border-bottom-color 0.1s ease-in-out;
+			border-bottom: 2px solid transparent;
+
+			&.active, &:hover {
+				background-color: transparent;
+				border: none;
+			}
+
+			&.active {
+				border-bottom: 2px solid $blue;
+			}
+
+
+			&:not(.active):hover {
+				border-bottom: 2px solid transparentize($blue, 0.5);
+			}
+		}
+	}
+}
+
+ngb-tabset.dark {
+	.nav-item {
+		.nav-link {
+			color: #EEE;
+
+			&.active, &:hover {
+				color: #FFF;
+			}
+		}
+	}
+}

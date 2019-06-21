@@ -1,0 +1,11 @@
+:host {
+	display: block;
+	padding-left: 10px;
+
+	#game-log-scroller {
+		padding-top: 10px;
+		display: block;
+		height: 500px;
+		overflow-y: auto;
+	}
+}

@@ -1,0 +1,77 @@
+<ng-container *ngIf="hero">
+	<ngb-tabset class="dark">
+		<ngb-tab title="Stats & Skills">
+			<ng-template ngbTabContent>
+				<div class="m-top-15 m-bottom-10">
+					<h5 class="m-bottom-0">Level {{hero.level}}</h5>
+				</div>
+
+				<div class="row">
+					<div class="col-7">
+						<div class="pad-left-10 m-bottom-10">
+							<div class="row" *ngFor="let stat of hero.calculated.stats|pairs">
+								<div class="col-4" [textContent]="stat[0]|uppercase"></div>
+								<div class="col-8" [textContent]="stat[1]"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-5">
+						<div class="row" *ngFor="let skill of skills|pairs|orderBy:'1.name'">
+							<div class="col-8" [textContent]="skill[1].name"></div>
+							<div class="col-4 text-right" [textContent]="hero.calculated.skills[skill[0]] || 0"></div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</ngb-tab>
+
+		<ngb-tab title="Traits & Affinities">
+			<ng-template ngbTabContent>
+				<div class="row m-top-15">
+					<div class="col-6">
+						<div *ngFor="let trait of hero.calculated.traits">
+							<trait-label [traitID]="trait"></trait-label>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+
+		</ngb-tab>
+
+		<ngb-tab title="Equipment">
+			<ng-template ngbTabContent>
+				<div class="row m-top-15">
+					<div class="col-8">
+						<div class="row" *ngFor="let slot of equipmentSlots">
+							<div class="col-3 equip-slot-label" [textContent]="slot|ucfirst">
+
+							</div>
+							<div class="col-9 equip-slot-item" [ngClass]="!hero.equipment || !hero.equipment[slot] ? 'no-item' : ''">
+								<div class="row">
+									<div class="col-10">
+										<item-link *ngIf="hero.equipment && hero.equipment[slot]" [itemID]="hero.equipment[slot]"></item-link>
+
+										<span class="no-item" *ngIf="!hero.equipment || !hero.equipment[slot]">Empty</span>
+									</div>
+									<div class="col-2 equipment-actions">
+										<div class="cursor-pointer hover-opacity" (click)="unequipItem(slot)" *ngIf="!readOnly">Unequip</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</ngb-tab>
+
+		<ngb-tab title="Health">
+			<ng-template ngbTabContent>
+				<div class="row m-top-15">
+					<div class="col-12">
+						<p class="text-muted">No health problems.</p>
+					</div>
+				</div>
+			</ng-template>
+		</ngb-tab>
+	</ngb-tabset>
+</ng-container>

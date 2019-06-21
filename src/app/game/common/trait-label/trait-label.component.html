@@ -1,0 +1,20 @@
+<div class="trait-container" *ngIf="trait">
+	<div class="label" [ngbTooltip]="tipContent" [textContent]="trait.name" placement="bottom">
+
+	</div>
+
+	<ng-template #tipContent>
+		<div [innerHTML]="trait.desc" class="mb-1"></div>
+		<div *ngFor="let skill of trait.skills">
+			<strong class="mr-1 trait-tt-label">Skill</strong> <span class="pos-affinity">{{skills[skill.skill].name}} +{{skill.value}}</span>
+		</div>
+		<div *ngFor="let affinity of trait.affinities">
+			<strong class="mr-1 trait-tt-label">Affinity</strong> <span [ngClass]="affinity.value > 0 ? 'pos-affinity' : 'neg-affinity'">{{affinities[affinity.affinity].name}} {{affinity.value > 0 ? '+' : ''}}{{affinity.value}}</span>
+		</div>
+
+		<div *ngIf="!trait.skills && !trait.affinities">
+			<strong>Meta Trait</strong> - No skills or affinities
+		</div>
+	</ng-template>
+</div>
+

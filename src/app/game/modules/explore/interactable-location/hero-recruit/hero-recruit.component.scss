@@ -1,0 +1,31 @@
+@import '../../../../../../styles/_colors';
+
+:host {
+	.recruitable-hero-list {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.recruitable-hero-box {
+			width: 120px;
+			min-height: 90px;
+			text-align: center;
+
+			background-color: $slateLight;
+			border-radius: 1px;
+			padding: 10px;
+
+			.recruitable-hero-name {
+				display: block;
+			}
+
+			.recruitable-hero-level {
+				margin-bottom: 10px;
+			}
+
+			.recruitable-hero-level, .recruitable-hero-view-button, .recruitable-hero-recruit-button {
+				font-size: 12px;
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+:host {
+	span.item-name {
+		font-family: 'Cousine', monospace;
+		position: relative;
+		top: 1px;
+		cursor: pointer;
+	}
+
+	div.item-hover-actions {
+		display: inline-block;
+		margin-left: 10px;
+
+		span.action {
+			padding: 0 5px;
+		}
+	}
+}

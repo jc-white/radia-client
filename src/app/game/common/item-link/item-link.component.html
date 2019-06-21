@@ -1,0 +1,6 @@
+<div *ngIf="item">
+	<img [src]="statics + '/ui/items/' + item.icon" class="m-right-3" *ngIf="showIcon && item.icon" />
+	<img [src]="statics + '/ui/items/unknown-item.png'" class="m-right-3" *ngIf="showIcon && !item.icon" />
+
+	<span class="item-name" [innerHTML]="item.name" (click)="info()"></span>
+</div>

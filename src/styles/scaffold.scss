@@ -1,0 +1,80 @@
+body {
+	margin-top: 0 !important;
+}
+
+.main-container {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	height: 100vh;
+	background: #fafafa;
+	min-width: 900px;
+}
+
+.main-container .u-main-container {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	overflow: hidden;
+}
+
+.main-container .content-container {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	min-height: 1px;
+}
+
+.main-container .content-container .content-area {
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	padding: 1rem 1rem 1rem 1rem;
+}
+
+.main-container .content-container .content-area > :first-child {
+	margin-top: 0;
+}
+
+.main-container .content-container .sidenav {
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	-ms-flex-order: -1;
+	order: -1;
+	overflow: hidden;
+}
+
+.content-area {
+	padding: 0 !important;
+	overflow: hidden !important;
+	position: relative;
+}
+
+.header {
+	background-color: $slate !important;
+
+	.navbar-brand {
+		font-size: 24px !important;
+		color: #EEE;
+	}
+
+	ul {
+		li {
+			a {
+				color: #EEE;
+				font-weight: bold;
+				font-family: Metropolis, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+
+				&:hover {
+					color: #FFF;
+				}
+			}
+		}
+	}
+}

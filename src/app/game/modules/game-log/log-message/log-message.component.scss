@@ -1,0 +1,9 @@
+:host {
+	display: block;
+	font-family: 'Cousine', monospace;
+	min-height: 24px;
+
+	+log-message {
+		margin-top: 5px;
+	}
+}

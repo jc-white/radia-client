@@ -1,0 +1,17 @@
+<ng-container *ngIf="partyStore.party">
+	<strong>Resources</strong>
+	<ng-container *ngFor="let res of dict">
+		<div class="row" *ngIf="partyStore.party.resources[res.varName] >= 0">
+			<div class="col-1">
+				<img [src]="gameConfig.staticsUrl + '/ui/resources/'+res.icon+'.png'">
+			</div>
+			<div class="col-5">
+				{{res.name}}
+			</div>
+			<div class="col-3 text-right">
+				{{partyStore.party.resources[res.varName]}}
+			</div>
+			<div class="col-3"></div>
+		</div>
+	</ng-container>
+</ng-container>

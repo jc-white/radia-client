@@ -1,0 +1,21 @@
+<div id="explore-container" class="bs-row no-gutters">
+	<div id="worldmap-outer-container" class="pad-0">
+		<div id="worldmap-inner-container">
+			<worldmap id="worldmap"></worldmap>
+		</div>
+	</div>
+	<div class="bs-col-sm-6 bs-col-xl-6 pad-right-0">
+		<game-log></game-log>
+	</div>
+	<div class="bs-col">
+		<div id="current-tile-context">
+			<strong class="block m-bottom-10" *ngIf="store.currentTileProps.locationName" [textContent]="store.currentTileProps.locationName"></strong>
+
+			<div *ngIf="store.currentTileProps.locationType">
+				<interactable-location></interactable-location>
+			</div>
+
+			<spawn-list></spawn-list>
+		</div>
+	</div>
+</div>

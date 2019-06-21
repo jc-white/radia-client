@@ -1,0 +1,51 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/colors';
+
+:host {
+	.game-window-container {
+		background-color: $slate;
+		border: 1px solid $slateBorder;
+		color: #EEE;
+		border-radius: 1px;
+		padding: 10px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		opacity: 0;
+
+		-webkit-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+		-moz-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+		box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+
+		transition: opacity 0.2s ease-in-out;
+
+		&.open {
+			opacity: 1.0;
+		}
+
+		.game-window-close {
+			color: #EEE;
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 5px;
+			font-size: 24px;
+			line-height: 16px;
+			cursor: pointer;
+			opacity: 0.6;
+			transition: opacity 0.2s ease-in-out;
+
+			&:hover {
+				opacity: 1.0;
+			}
+
+			@include no-select();
+		}
+
+		.game-window-title {
+			color: #EEE;
+			margin: 0 0 15px 0;
+			cursor: move;
+		}
+	}
+}

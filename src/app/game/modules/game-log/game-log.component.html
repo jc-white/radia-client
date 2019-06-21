@@ -1,0 +1,4 @@
+<div id="game-log-scroller" #scroll>
+	<log-message text="Welcome to Radia."></log-message>
+	<log-message *ngFor="let entry of store.messages" [text]="entry.text" [type]="entry.type"></log-message>
+</div>

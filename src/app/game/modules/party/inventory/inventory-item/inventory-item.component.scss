@@ -1,0 +1,54 @@
+:host {
+	width: 270px;
+
+	> div {
+		border-radius: 2px;
+
+		.img-container {
+			display: inline-block;
+			width: 20px;
+		}
+
+		span {
+			font-family: 'Cousine', monospace;
+			position: relative;
+			top: 2px;
+			cursor: pointer;
+
+			&.count {
+				float: right;
+				padding-right: 20px;
+				top: 3px;
+			}
+		}
+
+		div.item-actions {
+			height: 0;
+			line-height: 0;
+			overflow: hidden;
+			transition: height 0.1s ease-in-out;
+
+			button {
+				padding-top: 0;
+				padding-bottom: 0;
+				margin-top: 0;
+				margin-bottom: 0;
+				line-height: 14px;
+				height: 14px;
+				font-size: 12px;
+			}
+		}
+
+		&.expanded {
+			-webkit-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+			-moz-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+			box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+
+			div.item-actions {
+				height: 24px;
+				line-height: 24px;
+				overflow: visible;
+			}
+		}
+	}
+}

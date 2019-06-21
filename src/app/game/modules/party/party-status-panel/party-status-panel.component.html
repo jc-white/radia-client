@@ -1,0 +1,6 @@
+<ng-container *ngIf="store.party">
+	<strong>Party Fatigue</strong>
+	<div class="progress hero-vit-bar large st" [title]="store.party.fatigue + '%'">
+		<progress max="100" [value]="store.party.fatigue"></progress>
+	</div>
+</ng-container>

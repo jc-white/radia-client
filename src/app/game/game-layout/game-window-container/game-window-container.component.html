@@ -1,0 +1,10 @@
+<div class="game-window-container" [ngClass]="visible ? 'open' : ''" [style.width.px]="settings.width" [style.height.px]="settings.height" [ngDraggable]="settings.draggable" [handle]="Handle"
+     [position]="{x: startX, y: startY}" [bounds]="windowRef.bounds?.nativeElement" [inBounds]="!!windowRef.bounds" [preventDefaultEvent]="true">
+	<div class="game-window-close" title="Close this window" (click)="close()">&times;</div>
+	<h3 class="game-window-title" [innerHTML]="settings.header || 'Window'" #Handle></h3>
+
+	<section class="game-window-contents">
+		<ng-container #contentContainer></ng-container>
+	</section>
+</div>
+
